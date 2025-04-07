@@ -14,7 +14,7 @@ mail = Mail() # instantiate the mail class
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, supports_credentials=True, origins=["https://nextjsfrontendecommerce.onrender.com"], max_age=86400)  # This enables CORS for frontend
+    CORS(app, origins=["https://nextjsfrontendecommerce.onrender.com"], max_age=86400)  # This enables CORS for frontend
 
     app.config['SESSION_COOKIE_SECURE'] = True  # Send cookie only over HTTPS
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Required for cross-site cookies with credentials
