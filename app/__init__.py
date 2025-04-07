@@ -14,7 +14,11 @@ mail = Mail() # instantiate the mail class
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, supports_credentials=True)  # This enables CORS for all routes
+    CORS(app, supports_credentials=True, origins=["http://localhost:3000", "https://your-frontend-domain.com"])  # This enables CORS for all routes
+
+    app.config['SESSION_COOKIE_SECURE'] = True  # Send cookie only over HTTPS
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Required for cross-site cookies with credentials
+    app.config['SESSION_COOKIE_HTTPONLY'] = True  # Helps prevent XSS
 
     # Configure the database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dothucong.db'
